@@ -1,0 +1,55 @@
+﻿<reloadedii:ReloadedIIPage x:Class="Adventure.Physics.Swap.Settings.ReloadedII.Pages.SadxMappingEditor"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Adventure.Physics.Swap.Settings.ReloadedII.Pages"
+      xmlns:reloadedii="clr-namespace:Adventure.Physics.Swap.Settings.ReloadedII"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      xmlns:extensions="clr-namespace:Adventure.Physics.Swap.Settings.ReloadedII.Extensions"
+      xmlns:enums="clr-namespace:Adventure.Physics.Swap.Shared.Enums;assembly=Adventure.Physics.Swap.Shared"
+      mc:Ignorable="d" 
+      d:DesignHeight="556" 
+      d:DesignWidth="468"
+      Title="{DynamicResource TitleSADX}">
+    <Grid Margin="{DynamicResource PageMargin}" DataContext="{Binding Path=ViewModel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid 
+            Grid.Row="0"
+            HorizontalAlignment="Stretch"
+            ItemsSource="{Binding Mapping.Pairs, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Top"
+            
+            ColumnWidth="*" 
+            CanUserResizeColumns="False"
+            CanUserResizeRows="False"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            CanUserSortColumns="False"
+            CanUserReorderColumns="False"
+
+            IsReadOnly="False"
+            AutoGenerateColumns="False"
+            Margin="{DynamicResource CommonItemVerticalMargin}">
+            <DataGrid.Columns>
+                <DataGridTextColumn     Header="{DynamicResource MappingEditorPhysicsCharacter}"     Binding="{Binding Key}"   Width="*" IsReadOnly="True" />
+                <DataGridComboBoxColumn Header="{DynamicResource MappingEditorPhysicsTargetProfile}" 
+                                        SelectedValueBinding="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                        ItemsSource="{Binding Source={extensions:EnumBindingSource {x:Type enums:AllCharacters}}}" 
+                                        Width="*" IsReadOnly="False" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button 
+            Grid.Row="1"
+            Content="{DynamicResource ButtonSave}"
+            HorizontalAlignment="Stretch"
+            Click="Save_Click"/>
+    </Grid>
+</reloadedii:ReloadedIIPage>

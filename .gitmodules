@@ -1,0 +1,3 @@
+[submodule "Submodules/Heroes.Controller.Hook.ReloadedII"]
+	path = Submodules/Heroes.Controller.Hook.ReloadedII
+	url = https://github.com/Sewer56/Heroes.Controller.Hook.ReloadedII.git
