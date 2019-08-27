@@ -6,6 +6,10 @@
 <b>Id: sonicadventureengine.physicsswap</b>
 </div>
 
+# About Me
+
+The following project is a [Reloaded II](https://github.com/Reloaded-Project/Reloaded-II) Mod Loader mod. It is a physics mod, allowing for characters' physics to be swapped and edited in semi-real time within any of the three games.
+
 # Supported Games
 
 - Sonic Adventure DX (2004, US Release)
