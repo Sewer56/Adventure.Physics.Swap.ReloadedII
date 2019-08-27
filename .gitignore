@@ -3,6 +3,7 @@
 
 # Reloaded Output
 Source/Output/
+Output/
 
 # User-specific files
 *.suo

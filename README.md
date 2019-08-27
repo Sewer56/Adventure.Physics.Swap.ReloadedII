@@ -1,28 +1,37 @@
 <div align="center">
-	<h1>Heroes Freecam</h1>
+	<h1>Sonic Adventure Engine Physics Mod</h1>
 	<img src="https://i.imgur.com/BjPn7rU.png" width="150" align="center" />
 	<br/> <br/>
-	<strong>I want to fly high!<br/></strong>
-<b>Id: sonicheroes.utils.freecam</b>
+	<strong>You can stop asking me about it. Thanks!<br/></strong>
+<b>Id: sonicadventureengine.physicsswap</b>
 </div>
 
-# Prerequisites
-The Freecam uses the [Hooks Shared Library](https://github.com/Sewer56/Reloaded.SharedLib.Hooks).
-Please download and extract that mod first.
+# Supported Games
 
-The Freecam uses the [Controller Hook](https://github.com/Sewer56/Heroes.Controller.Hook.ReloadedII).
-Please download and extract that mod first.
+- Sonic Adventure DX (2004, US Release)
+- Sonic Adventure 2\* (Steam)
+- Sonic Heroes
 
-# About This Project
+\* Must be stripped from DRM using [Steamless](https://github.com/atom0s/Steamless). Reloaded II does not currently have the ability to decrypt Steam DRM executables. Alternatively inject Reloaded after starting the game or load asynchronously using an external loader using the methods described [here](https://github.com/Reloaded-Project/Reloaded-II/blob/master/Docs/InjectionMethods.md#auto-inject--inject). 
 
-The following project is a [Reloaded II](https://github.com/Reloaded-Project/Reloaded-II) Mod Loader mod. It is a simple, fixed; free camera implementation that can rotate on all three axis (it can roll!) with additional support for the following features:
+# Features
 
-- Freeze Scene
-- Toggle HUD
-- Teleport
-- Movement/Rotation Sensitivity
+- Semi-realtime physics editing and swapping. 
+  - SADX/SA2: Re-enter level for changes to take effect.
+  - Heroes: Switch leader. 
+  - Will consider true realtime editing if it's a requested feature.
+- Easy to use, fancy GUI. 
 
-As this was created for the sole purpose of taking screenshots; there are not many customization features; the controls are fixed and primarily designed to be operated using a controller with two analog sticks.
+# Usage
 
-# Demo
-A demo of the free camera can be found here: [YouTube](https://www.youtube.com/watch?v=UfxBN2ElmIM)
+- Install mod like a regular Reloaded II mod.
+- Run `Config.exe` to setup mod configuration.
+- Run the game.
+
+Semi-realtime editing is supported (see above).
+
+# Previews
+
+![image](https://i.imgur.com/ds7SMzL.png)
+
+![image](https://i.imgur.com/DUGtjXg.png)
