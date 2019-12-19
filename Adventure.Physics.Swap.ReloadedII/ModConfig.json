@@ -2,9 +2,11 @@
   "ModId": "sonicadventureengine.physicsswap",
   "ModName": "Sonic Adventure 1/2/Heroes Physics Swap",
   "ModAuthor": "Sewer56",
-  "ModVersion": "1.0.0",
+  "ModVersion": "1.1.0",
   "ModDescription": "Simple mod for Sonic Heroes that allows for swapping character physics.",
   "ModDll": "Adventure.Physics.Swap.ReloadedII.dll",
+  "ModR2RManagedDll32": "x86/Adventure.Physics.Swap.ReloadedII.dll",
+  "ModR2RManagedDll64": "x64/Adventure.Physics.Swap.ReloadedII.dll",
   "ModIcon": "Preview.png",
   "ModDependencies": [],
   "SupportedAppId": [ "tsonic_win.exe", "sonic2app.exe", "sonic.exe" ]

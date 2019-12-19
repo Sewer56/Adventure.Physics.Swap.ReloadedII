@@ -20,6 +20,7 @@ namespace Adventure.Physics.Swap.ReloadedII
         private PhysicsMod      _physicsMod;
         private FileSystemWatcher _watcher;
 
+        public static void Main() { }
         public void Start(IModLoaderV1 loader)
         {
             _modLoader = (IModLoader)loader;
