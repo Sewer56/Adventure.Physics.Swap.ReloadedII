@@ -11,9 +11,9 @@ namespace Adventure.Physics.Swap.ReloadedII
 {
     public class PhysicsMod
     {
-        public IntPtr PhysicsBaseAddress { get; private set; }
-        public AdventurePhysics[] PhysicsDump { get; private set; }
-        public Game Game { get; private set; }
+        public IntPtr PhysicsBaseAddress            { get; private set; }
+        public AdventurePhysics[] PhysicsDump       { get; private set; }
+        public Game Game                            { get; private set; }
 
         /* Setup / Teardown */
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using Adventure.Physics.Swap.ReloadedII.Configuration;
 using Adventure.Physics.Swap.ReloadedII.Enums;
 using Adventure.Physics.Swap.Shared.Configs;
 using Reloaded.Mod.Interfaces;
@@ -45,7 +46,7 @@ namespace Adventure.Physics.Swap.ReloadedII
                 note += "Heroes: Switch characters to take effect.";
 
             _logger.WriteLine($"[AdventurePhysicsSwap] Config file changed. Reapplying config.{note}", _logger.ColorGreen);
-            _config = Config.FromJson(_modDirectory);
+            _config = Utilities.TryGetValue(() => Config.FromJson(_modDirectory), 250, 2);
             _physicsMod.ApplyFromConfig(_config);
         }
 
