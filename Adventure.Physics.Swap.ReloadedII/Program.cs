@@ -21,6 +21,8 @@ namespace Adventure.Physics.Swap.ReloadedII
         private PhysicsMod      _physicsMod;
         private FileSystemWatcher _watcher;
 
+        private Task _setupPhysicsSwap;
+
         public static void Main() { }
         public void Start(IModLoaderV1 loader)
         {
@@ -28,8 +30,10 @@ namespace Adventure.Physics.Swap.ReloadedII
             _logger = (ILogger) _modLoader.GetLogger();
 
             /* Your mod code starts here. */
-            // Load mod asynchronously to not stall startup times. (Newtonsoft.Json is slow on first run)
-            Task.Run(() =>
+            // Load mod asynchronously during the same time other mods load. (Newtonsoft.Json is slow on first run)
+            // Then wait if necessary if mod loader is done with other mods.
+            _modLoader.OnModLoaderInitialized += OnModLoaderInitialized;
+            _setupPhysicsSwap = Task.Run(() =>
             {
                 _modDirectory = _modLoader.GetDirectoryForModId(ThisModId);
                 _config = Config.FromJson(_modDirectory);
@@ -41,6 +45,12 @@ namespace Adventure.Physics.Swap.ReloadedII
                 _watcher.EnableRaisingEvents = true;
                 _watcher.Changed += WatcherOnChanged;
             });
+        }
+
+        private void OnModLoaderInitialized()
+        {
+            _setupPhysicsSwap.Wait();
+            _modLoader.OnModLoaderInitialized -= OnModLoaderInitialized;
         }
 
         private void WatcherOnChanged(object sender, FileSystemEventArgs e)
