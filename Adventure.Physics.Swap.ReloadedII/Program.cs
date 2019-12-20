@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using Adventure.Physics.Swap.ReloadedII.Configuration;
 using Adventure.Physics.Swap.ReloadedII.Enums;
 using Adventure.Physics.Swap.Shared.Configs;
@@ -27,15 +28,19 @@ namespace Adventure.Physics.Swap.ReloadedII
             _logger = (ILogger) _modLoader.GetLogger();
 
             /* Your mod code starts here. */
-            _modDirectory   = _modLoader.GetDirectoryForModId(ThisModId);
-            _config         = Config.FromJson(_modDirectory);
-            _physicsMod     = new PhysicsMod();
-            _physicsMod.ApplyFromConfig(_config);
+            // Load mod asynchronously to not stall startup times. (Newtonsoft.Json is slow on first run)
+            Task.Run(() =>
+            {
+                _modDirectory = _modLoader.GetDirectoryForModId(ThisModId);
+                _config = Config.FromJson(_modDirectory);
+                _physicsMod = new PhysicsMod();
+                _physicsMod.ApplyFromConfig(_config);
 
-            string filePath = Config.GetFilePath(_modDirectory);
-            _watcher        = new FileSystemWatcher(Path.GetDirectoryName(filePath), Path.GetFileName(filePath));
-            _watcher.EnableRaisingEvents = true;
-            _watcher.Changed += WatcherOnChanged;
+                string filePath = Config.GetFilePath(_modDirectory);
+                _watcher = new FileSystemWatcher(Path.GetDirectoryName(filePath), Path.GetFileName(filePath));
+                _watcher.EnableRaisingEvents = true;
+                _watcher.Changed += WatcherOnChanged;
+            });
         }
 
         private void WatcherOnChanged(object sender, FileSystemEventArgs e)
