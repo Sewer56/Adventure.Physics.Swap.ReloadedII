@@ -1,4 +1,7 @@
-﻿using Adventure.Physics.Swap.Settings.ReloadedII.Models.ViewModel;
+﻿using System.IO;
+using System.Windows;
+using Adventure.Physics.Swap.Settings.ReloadedII.Models.ViewModel;
+using Ookii.Dialogs.Wpf;
 
 namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages
 {
@@ -18,6 +21,22 @@ namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages
         private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             ViewModel.Save();
+        }
+
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
+            var saveDialog = new VistaSaveFileDialog
+            {
+                Title = "Export to physics data to binary format",
+                AddExtension = true,
+                Filter = "Binary File (*.bin)|*.bin",
+                DefaultExt = ".bin",
+            };
+
+            if ((bool) saveDialog.ShowDialog())
+            {
+                File.WriteAllBytes(saveDialog.FileName, ViewModel.ToBytes());
+            }
         }
     }
 }

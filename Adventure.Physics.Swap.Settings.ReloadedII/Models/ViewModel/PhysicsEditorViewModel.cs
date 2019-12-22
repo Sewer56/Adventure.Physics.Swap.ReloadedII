@@ -32,5 +32,7 @@ namespace Adventure.Physics.Swap.Settings.ReloadedII.Models.ViewModel
 
             Config.ToJson(Environment.CurrentDirectory);
         }
+
+        public byte[] ToBytes() => Config.ToBytes();
     }
 }

@@ -25,10 +25,24 @@
         <xctk:PropertyGrid Grid.Row="1"
                            Margin="{DynamicResource CommonItemVerticalMargin}"
                            SelectedObject="{Binding CurrentPhysics.Physics}"/>
-        <Button 
-            Grid.Row="2"
-            Content="{DynamicResource ButtonSave}"
-            HorizontalAlignment="Stretch"
-            Click="Save_Click"/>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button 
+                Grid.Column="0"
+                Content="{DynamicResource ButtonSave}"
+                HorizontalAlignment="Stretch"
+                Click="Save_Click"/>
+            <Button 
+                Grid.Column="2"
+                Content="{DynamicResource ButtonExport}"
+                HorizontalAlignment="Stretch"
+                Click="Export_Click"/>
+        </Grid>
     </Grid>
 </reloadedii:ReloadedIIPage>

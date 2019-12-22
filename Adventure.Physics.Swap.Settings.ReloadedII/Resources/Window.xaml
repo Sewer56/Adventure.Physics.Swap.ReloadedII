@@ -42,5 +42,6 @@
     <sys:String x:Key="MappingEditorPhysicsTargetProfile">Physics Profile</sys:String>
 
     <sys:String x:Key="ButtonSave">Save</sys:String> <!-- Add Undertale reference here. -->
+    <sys:String x:Key="ButtonExport">Export To Binary</sys:String>
 
 </ResourceDictionary>

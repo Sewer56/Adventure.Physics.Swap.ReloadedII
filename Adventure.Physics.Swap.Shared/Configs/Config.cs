@@ -97,6 +97,24 @@ namespace Adventure.Physics.Swap.Shared.Configs
         }
 
         /// <summary>
+        /// Converts the current configuration's physics profiles to bytes.
+        /// </summary>
+        /// <returns></returns>
+        public byte[] ToBytes()
+        {
+            var values = Enum.GetValues(typeof(AllCharacters));
+            var bytes  = new List<byte>(values.Length * Struct.GetSize<AdventurePhysics>(true));
+
+            foreach (AllCharacters character in (AllCharacters[])values)
+            {
+                var physics = Physics[character];
+                bytes.AddRange(Struct.GetBytes(ref physics, true));
+            }
+
+            return bytes.ToArray();
+        }
+
+        /// <summary>
         /// Attempts to obtain a character for a given supported generic enum type.
         /// </summary>
         /// <returns>Null if failed.</returns>
