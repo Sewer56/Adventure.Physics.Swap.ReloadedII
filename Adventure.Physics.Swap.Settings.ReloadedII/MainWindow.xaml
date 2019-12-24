@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="{Binding RealViewModel.WindowTitle, RelativeSource={RelativeSource Mode=Self}}" 
         Height="600" 
-        Width="600"
+        Width="650"
         Style="{DynamicResource ReloadedWindow}">
     <Grid DataContext="{Binding RealViewModel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type default:ReloadedWindow}}}">
         <Grid.ColumnDefinitions>

@@ -86,13 +86,21 @@ namespace Adventure.Physics.Swap.Shared.Configs
                     throw new Exception("Failed to find default physics binary file.");
             }
 
+            ImportFile(filePath);
+        }
+
+        /// <summary>
+        /// Imports a binary physics file.
+        /// </summary>
+        public void ImportFile(string filePath)
+        {
             var file = File.ReadAllBytes(filePath);
             StructArray.FromArray<AdventurePhysics>(file, out var physics, true);
 
             // WARNING: Order of AllCharacters must match binary file!
             foreach (AllCharacters character in (AllCharacters[])Enum.GetValues(typeof(AllCharacters)))
             {
-                Physics[character] = physics[(int) character];
+                Physics[character] = physics[(int)character];
             }
         }
 
