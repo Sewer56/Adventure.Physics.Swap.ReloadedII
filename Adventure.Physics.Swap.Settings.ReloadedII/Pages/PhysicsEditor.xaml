@@ -31,6 +31,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Button 
@@ -43,6 +45,12 @@
                 Content="{DynamicResource ButtonExport}"
                 HorizontalAlignment="Stretch"
                 Click="Export_Click"/>
+
+            <Button 
+                Grid.Column="4"
+                Content="{DynamicResource ButtonImport}"
+                HorizontalAlignment="Stretch"
+                Click="Import_Click"/>
         </Grid>
     </Grid>
 </reloadedii:ReloadedIIPage>

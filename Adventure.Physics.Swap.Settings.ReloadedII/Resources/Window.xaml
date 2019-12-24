@@ -43,5 +43,6 @@
 
     <sys:String x:Key="ButtonSave">Save</sys:String> <!-- Add Undertale reference here. -->
     <sys:String x:Key="ButtonExport">Export To Binary</sys:String>
+    <sys:String x:Key="ButtonImport">Import From Binary</sys:String>
 
 </ResourceDictionary>

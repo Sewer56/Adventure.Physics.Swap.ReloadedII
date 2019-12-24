@@ -34,5 +34,6 @@ namespace Adventure.Physics.Swap.Settings.ReloadedII.Models.ViewModel
         }
 
         public byte[] ToBytes() => Config.ToBytes();
+        public void Load(string filePath) => Config.ImportFile(filePath);
     }
 }

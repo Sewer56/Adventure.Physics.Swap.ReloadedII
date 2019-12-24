@@ -38,5 +38,21 @@ namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages
                 File.WriteAllBytes(saveDialog.FileName, ViewModel.ToBytes());
             }
         }
+
+        private void Import_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new VistaOpenFileDialog
+            {
+                Title = "Import physics data from binary format",
+                AddExtension = true,
+                Filter = "Binary File (*.bin)|*.bin",
+                DefaultExt = ".bin",
+            };
+
+            if ((bool)openFileDialog.ShowDialog())
+            {
+                ViewModel.Load(openFileDialog.FileName);
+            }
+        }
     }
 }
