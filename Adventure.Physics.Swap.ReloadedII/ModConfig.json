@@ -2,7 +2,7 @@
   "ModId": "sonicadventureengine.physicsswap",
   "ModName": "Sonic Adventure 1/2/Heroes Physics Swap",
   "ModAuthor": "Sewer56",
-  "ModVersion": "1.2.0",
+  "ModVersion": "1.2.1",
   "ModDescription": "Physics Editor for SADX/SA2B/Sonic Heroes that lets you edit and/or swap character physics.",
   "ModDll": "Adventure.Physics.Swap.ReloadedII.dll",
   "ModR2RManagedDll32": "x86/Adventure.Physics.Swap.ReloadedII.dll",

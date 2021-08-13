@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:reloadedii="clr-namespace:Adventure.Physics.Swap.Settings.ReloadedII"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:misc="clr-namespace:Adventure.Physics.Swap.Settings.ReloadedII.Misc"
       mc:Ignorable="d" 
       d:DesignHeight="556" 
       d:DesignWidth="468"
@@ -22,9 +23,14 @@
                   SelectedItem="{Binding CurrentPhysics}"
                   Margin="{DynamicResource CommonItemVerticalMargin}"/>
 
-        <xctk:PropertyGrid Grid.Row="1"
-                           Margin="{DynamicResource CommonItemVerticalMargin}"
-                           SelectedObject="{Binding CurrentPhysics.Physics}"/>
+        <misc:NoInheritanceContentControl Grid.Row="1"
+                                              Margin="{DynamicResource CommonItemVerticalMargin}">
+            <xctk:PropertyGrid Grid.Row="1"
+                               Margin="{DynamicResource CommonItemVerticalMargin}"
+                               SelectedObject="{Binding CurrentPhysics.Physics}"/>
+        </misc:NoInheritanceContentControl>
+
+
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>

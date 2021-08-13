@@ -36,7 +36,8 @@
 
             IsReadOnly="False"
             AutoGenerateColumns="False"
-            Margin="{DynamicResource CommonItemVerticalMargin}">
+            Margin="{DynamicResource CommonItemVerticalMargin}"
+            Style="{DynamicResource DefaultDataGrid}">
             <DataGrid.Columns>
                 <DataGridTextColumn     Header="{DynamicResource MappingEditorPhysicsCharacter}"     Binding="{Binding Key}"   Width="*" IsReadOnly="True" />
                 <DataGridComboBoxColumn Header="{DynamicResource MappingEditorPhysicsTargetProfile}" 

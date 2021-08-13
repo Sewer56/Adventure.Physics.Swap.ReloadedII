@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RollForward>Major</RollForward>
     <UseWPF>true</UseWPF>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -45,8 +46,9 @@
   <ItemGroup>
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="1.1.0" />
     <PackageReference Include="ParallelExtensionsExtras" Version="1.2.0" />
-    <PackageReference Include="PropertyChanged.Fody" Version="3.0.1" />
-    <PackageReference Include="Reloaded.WPF.Theme.Default" Version="1.0.1" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+    <PackageReference Include="Reloaded.WPF" Version="3.0.4" />
+    <PackageReference Include="Reloaded.WPF.Theme.Default" Version="3.0.4" />
   </ItemGroup>
 
   <ItemGroup>
