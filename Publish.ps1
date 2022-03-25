@@ -16,10 +16,10 @@ New-Item $publishDirectory -ItemType Directory
 # Build
 dotnet restore $solutionName
 dotnet clean $solutionName
-dotnet publish $solutionName -c Debug --self-contained false -o "$modOutputPath"
-dotnet publish $solutionName -c Debug -r win-x86 --self-contained false -o "$modOutputPath/x86" /p:PublishReadyToRun=true
-dotnet publish $solutionName -c Debug -r win-x64 --self-contained false -o "$modOutputPath/x64" /p:PublishReadyToRun=true
-dotnet publish $configProjectName -c Debug -r win-x64 --self-contained false -o "$modOutputPath" /p:PublishReadyToRun=true
+dotnet publish $solutionName -c Release --self-contained false -o "$modOutputPath"
+dotnet publish $solutionName -c Release -r win-x86 --self-contained false -o "$modOutputPath/x86"
+dotnet publish $solutionName -c Release -r win-x64 --self-contained false -o "$modOutputPath/x64"
+dotnet publish $configProjectName -c Release -r win-x64 --self-contained false -o "$modOutputPath"
 
 # Remove Redundant Files
 Remove-Item "$modOutputPath/x86/Preview.png"
