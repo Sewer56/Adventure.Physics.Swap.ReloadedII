@@ -1,14 +1,13 @@
-﻿namespace Adventure.Physics.Swap.Shared.Enums
+﻿namespace Adventure.Physics.Swap.Shared.Enums;
+
+public enum SadxCharacter
 {
-    public enum SadxCharacter
-    {
-        Sonic,
-        Eggman,
-        Tails,
-        Knuckles,
-        Tikal,
-        Amy,
-        Gamma,
-        Big
-    }
+    Sonic,
+    Eggman,
+    Tails,
+    Knuckles,
+    Tikal,
+    Amy,
+    Gamma,
+    Big
 }

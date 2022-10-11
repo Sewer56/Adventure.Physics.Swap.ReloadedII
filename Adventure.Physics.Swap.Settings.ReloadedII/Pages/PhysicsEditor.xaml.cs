@@ -3,56 +3,55 @@ using System.Windows;
 using Adventure.Physics.Swap.Settings.ReloadedII.Models.ViewModel;
 using Ookii.Dialogs.Wpf;
 
-namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages
+namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages;
+
+/// <summary>
+/// Interaction logic for PhysicsEditor.xaml
+/// </summary>
+public partial class PhysicsEditor : ReloadedIIPage
 {
-    /// <summary>
-    /// Interaction logic for PhysicsEditor.xaml
-    /// </summary>
-    public partial class PhysicsEditor : ReloadedIIPage
+    public PhysicsEditorViewModel ViewModel { get; set; }
+
+    public PhysicsEditor(PhysicsEditorViewModel viewModel)
     {
-        public PhysicsEditorViewModel ViewModel { get; set; }
+        ViewModel = viewModel;
+        InitializeComponent();
+    }
 
-        public PhysicsEditor(PhysicsEditorViewModel viewModel)
+    private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
+    {
+        ViewModel.Save();
+    }
+
+    private void Export_Click(object sender, RoutedEventArgs e)
+    {
+        var saveDialog = new VistaSaveFileDialog
         {
-            ViewModel = viewModel;
-            InitializeComponent();
+            Title = "Export to physics data to binary format",
+            AddExtension = true,
+            Filter = "Binary File (*.bin)|*.bin",
+            DefaultExt = ".bin",
+        };
+
+        if ((bool) saveDialog.ShowDialog()!)
+        {
+            File.WriteAllBytes(saveDialog.FileName, ViewModel.ToBytes());
         }
+    }
 
-        private void Save_Click(object sender, System.Windows.RoutedEventArgs e)
+    private void Import_Click(object sender, RoutedEventArgs e)
+    {
+        var openFileDialog = new VistaOpenFileDialog
         {
-            ViewModel.Save();
-        }
+            Title = "Import physics data from binary format",
+            AddExtension = true,
+            Filter = "Binary File (*.bin)|*.bin",
+            DefaultExt = ".bin",
+        };
 
-        private void Export_Click(object sender, RoutedEventArgs e)
+        if ((bool)openFileDialog.ShowDialog()!)
         {
-            var saveDialog = new VistaSaveFileDialog
-            {
-                Title = "Export to physics data to binary format",
-                AddExtension = true,
-                Filter = "Binary File (*.bin)|*.bin",
-                DefaultExt = ".bin",
-            };
-
-            if ((bool) saveDialog.ShowDialog())
-            {
-                File.WriteAllBytes(saveDialog.FileName, ViewModel.ToBytes());
-            }
-        }
-
-        private void Import_Click(object sender, RoutedEventArgs e)
-        {
-            var openFileDialog = new VistaOpenFileDialog
-            {
-                Title = "Import physics data from binary format",
-                AddExtension = true,
-                Filter = "Binary File (*.bin)|*.bin",
-                DefaultExt = ".bin",
-            };
-
-            if ((bool)openFileDialog.ShowDialog())
-            {
-                ViewModel.Load(openFileDialog.FileName);
-            }
+            ViewModel.Load(openFileDialog.FileName);
         }
     }
 }

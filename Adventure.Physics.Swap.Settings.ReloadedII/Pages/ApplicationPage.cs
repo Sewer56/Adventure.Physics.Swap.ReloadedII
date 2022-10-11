@@ -1,10 +1,9 @@
-﻿namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages
+﻿namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages;
+
+public enum ApplicationPage
 {
-    public enum ApplicationPage
-    {
-        PhysicsEditor,
-        SadxMappingEditor,
-        Sa2bMappingEditor,
-        HeroesMappingEditor,
-    }
+    PhysicsEditor,
+    SadxMappingEditor,
+    Sa2bMappingEditor,
+    HeroesMappingEditor,
 }

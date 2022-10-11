@@ -1,47 +1,44 @@
-﻿using System.IO;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 using Ninject;
-using Reloaded.WPF.MVVM;
 
-namespace Adventure.Physics.Swap.Shared.Configs.Json
+namespace Adventure.Physics.Swap.Shared.Configs.Json;
+
+public abstract class ObservableJsonSerializable<TType> : ObservableObject where TType : IInitializable, new() 
 {
-    public abstract class ObservableJsonSerializable<TType> : ObservableObject where TType : IInitializable, new() 
+    private static JsonSerializerOptions _options = new()
     {
-        protected static JsonSerializerSettings Options = new JsonSerializerSettings()
-        {
-            Converters = { new StringEnumConverter() },
-            Formatting = Formatting.Indented
-        };
+        Converters = { new JsonStringEnumConverter() },
+        WriteIndented = true
+    };
 
-        public static TType FromPath(string filePath)
+    public static TType FromPath(string filePath)
+    {
+        TType value;
+        if (File.Exists(filePath))
         {
-            TType value;
-            if (File.Exists(filePath))
-            {
-                string jsonFile = File.ReadAllText(filePath);
-                value = JsonConvert.DeserializeObject<TType>(jsonFile, Options);
-            }
-            else
-            {
-                var newFile = new TType();
-                ToPath(newFile, filePath);
-                value = newFile;
-            }
-
-            value.Initialize();
-            return value;
+            string jsonFile = File.ReadAllText(filePath);
+            value = JsonSerializer.Deserialize<TType>(jsonFile, _options)!;
+        }
+        else
+        {
+            var newFile = new TType();
+            ToPath(newFile, filePath);
+            value = newFile;
         }
 
-        public static void ToPath(TType config, string filePath)
-        {
-            string fullPath = Path.GetFullPath(filePath);
-            string directoryOfPath = Path.GetDirectoryName(fullPath);
-            if (!Directory.Exists(directoryOfPath))
-                Directory.CreateDirectory(directoryOfPath);
+        value.Initialize();
+        return value;
+    }
 
-            string jsonFile = JsonConvert.SerializeObject(config, Options);
-            File.WriteAllText(fullPath, jsonFile);
-        }
+    public static void ToPath(TType config, string filePath)
+    {
+        string fullPath = Path.GetFullPath(filePath);
+        string directoryOfPath = Path.GetDirectoryName(fullPath)!;
+        if (!Directory.Exists(directoryOfPath))
+            Directory.CreateDirectory(directoryOfPath);
+
+        string jsonFile = JsonSerializer.Serialize(config, _options);
+        File.WriteAllText(fullPath, jsonFile);
     }
 }

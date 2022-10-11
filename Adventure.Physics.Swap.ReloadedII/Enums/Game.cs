@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿namespace Adventure.Physics.Swap.ReloadedII.Enums;
 
-namespace Adventure.Physics.Swap.ReloadedII.Enums
+public enum Game
 {
-    public enum Game
-    {
-        Null,
-        Sadx,
-        Sa2b,
-        Heroes
-    }
+    Null,
+    Sadx,
+    Sa2b,
+    Heroes
 }

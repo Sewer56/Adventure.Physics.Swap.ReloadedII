@@ -1,8 +1,8 @@
 {
   "ModId": "sonicadventureengine.physicsswap",
-  "ModName": "Sonic Adventure 1/2/Heroes Physics Swap",
+  "ModName": "Sonic Adventure 1/2/Heroes Physics Editor",
   "ModAuthor": "Sewer56",
-  "ModVersion": "1.2.2",
+  "ModVersion": "1.2.3",
   "ModDescription": "Physics Editor for SADX/SA2B/Sonic Heroes that lets you edit and/or swap character physics.",
   "ModDll": "Adventure.Physics.Swap.ReloadedII.dll",
   "ModIcon": "Preview.png",
@@ -30,6 +30,9 @@
   "ModDependencies": [],
   "OptionalDependencies": [],
   "SupportedAppId": [
-    "tsonic_win.exe"
-  ]
+    "tsonic_win.exe",
+    "sonic2app.exe",
+    "sonic.exe"
+  ],
+  "ProjectUrl": "https://github.com/Sewer56/Adventure.Physics.Swap.ReloadedII"
 }

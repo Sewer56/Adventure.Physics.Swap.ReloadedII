@@ -4,24 +4,23 @@ using Adventure.Physics.Swap.Settings.ReloadedII.Models.ViewModel;
 using Adventure.Physics.Swap.Shared.Configs;
 using Adventure.Physics.Swap.Shared.Enums;
 
-namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages
+namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages;
+
+/// <summary>
+/// Interaction logic for MappingEditor.xaml
+/// </summary>
+public partial class HeroesMappingEditor : ReloadedIIPage
 {
-    /// <summary>
-    /// Interaction logic for MappingEditor.xaml
-    /// </summary>
-    public partial class HeroesMappingEditor : ReloadedIIPage
+    public MappingEditorViewModel<HeroesCharacter, AllCharacters>  ViewModel  { get; set; }
+
+    public HeroesMappingEditor(Config config, MappingEditorParameters<HeroesCharacter, AllCharacters> parameters)
     {
-        public MappingEditorViewModel<HeroesCharacter, AllCharacters>  ViewModel  { get; set; }
+        InitializeComponent();
+        ViewModel   = new MappingEditorViewModel<HeroesCharacter, AllCharacters>(parameters, config);
+    }
 
-        public HeroesMappingEditor(Config config, MappingEditorParameters<HeroesCharacter, AllCharacters> parameters)
-        {
-            InitializeComponent();
-            ViewModel   = new MappingEditorViewModel<HeroesCharacter, AllCharacters>(parameters, config);
-        }
-
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Save();
-        }
+    private void Save_Click(object sender, RoutedEventArgs e)
+    {
+        ViewModel.Save();
     }
 }

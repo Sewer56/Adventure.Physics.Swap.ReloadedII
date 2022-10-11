@@ -4,24 +4,23 @@ using Adventure.Physics.Swap.Settings.ReloadedII.Models.ViewModel;
 using Adventure.Physics.Swap.Shared.Configs;
 using Adventure.Physics.Swap.Shared.Enums;
 
-namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages
+namespace Adventure.Physics.Swap.Settings.ReloadedII.Pages;
+
+/// <summary>
+/// Interaction logic for MappingEditor.xaml
+/// </summary>
+public partial class SadxMappingEditor : ReloadedIIPage
 {
-    /// <summary>
-    /// Interaction logic for MappingEditor.xaml
-    /// </summary>
-    public partial class SadxMappingEditor : ReloadedIIPage
+    public MappingEditorViewModel<SadxCharacter, AllCharacters>  ViewModel  { get; set; }
+
+    public SadxMappingEditor(Config config, MappingEditorParameters<SadxCharacter, AllCharacters> parameters)
     {
-        public MappingEditorViewModel<SadxCharacter, AllCharacters>  ViewModel  { get; set; }
+        InitializeComponent();
+        ViewModel   = new MappingEditorViewModel<SadxCharacter, AllCharacters>(parameters, config);
+    }
 
-        public SadxMappingEditor(Config config, MappingEditorParameters<SadxCharacter, AllCharacters> parameters)
-        {
-            InitializeComponent();
-            ViewModel   = new MappingEditorViewModel<SadxCharacter, AllCharacters>(parameters, config);
-        }
-
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.Save();
-        }
+    private void Save_Click(object sender, RoutedEventArgs e)
+    {
+        ViewModel.Save();
     }
 }

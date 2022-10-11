@@ -1,11 +1,3 @@
-<div align="center">
-	<h1>Sonic Adventure Engine Physics Mod</h1>
-	<img src="https://i.imgur.com/BjPn7rU.png" width="150" align="center" />
-	<br/> <br/>
-	<strong>You can stop asking me about it. Thanks!<br/></strong>
-<b>Id: sonicadventureengine.physicsswap</b>
-</div>
-
 # About Me
 
 The following project is a [Reloaded II](https://github.com/Reloaded-Project/Reloaded-II) Mod Loader mod. It is a physics mod, allowing for characters' physics to be swapped and edited in semi-real time within any of the three games.
