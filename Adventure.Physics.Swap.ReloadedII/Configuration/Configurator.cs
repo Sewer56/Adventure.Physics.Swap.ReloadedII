@@ -23,11 +23,13 @@ public class Configurator : IConfiguratorV1
     /// </summary>
     public bool TryRunCustomConfiguration()
     {
-        var executable = Path.Combine(ModFolder, "Config.exe");
+        var executable = Path.Combine(ModFolder, "Config.dll");
         var processStartInfo = new ProcessStartInfo()
         {
-            FileName = executable,
-            WorkingDirectory = ModFolder
+            FileName = "dotnet",
+            Arguments = $"\"{executable}\"",
+            WorkingDirectory = ModFolder,
+            CreateNoWindow = true
         };
 
         Process.Start(processStartInfo);
